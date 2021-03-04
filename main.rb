@@ -28,16 +28,11 @@ until choice == 0 && choice < collection.size
 
   unless choice == 0
     user_choice = collection.to_a[choice - 1]
-    
-    unless user_choice.amount == 0
-      user_choice.amount -= 1
-      basket.add(user_choice)
-      collection.delete_out_product!
+    user_choice.amount -= 1
+    basket.add(user_choice)
+    collection.delete_out_product!
 
-      puts "Вы выбрали: #{user_choice}"
-    else
-      puts "Товар закончился:("
-    end 
+    puts "Вы выбрали: #{user_choice}"
 
     puts "\nВсего товаров на сумму: #{basket.sum} руб."
     puts "======================================================================\n\n"

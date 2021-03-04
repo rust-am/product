@@ -1,7 +1,6 @@
 require 'active_support/core_ext/string/inflections'
 
 class ProductCollection
-
   def self.from_dir(dir_path)
     products = []
     
