@@ -1,14 +1,6 @@
 class Product
   attr_accessor :price, :amount, :name
 
-  # def self.product_types
-  #   [Book, Movie]
-  # end
-  #
-  # def self.create(type_index)
-  #   product_types[type_index].new
-  # end
-
   def self.from_file(file_path)
     raise NotImplementedError
   end
