@@ -24,7 +24,11 @@ class Movie < Product
     @director = params[:director] if params[:director]
   end
 
+  def to_s_clean
+    "Фильм #{@name}, #{@year}, реж. #{@director}"
+  end
+
   def to_s
-    "Фильм #{@name}, #{@year}, реж. #{@director}, " + super
+    self.to_s_clean + super
   end
 end

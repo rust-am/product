@@ -8,31 +8,29 @@ require_relative 'lib/basket'
 collection = ProductCollection.from_dir("#{__dir__}/data")
 collection.sort!(by: :price, order: :asc)
 
-puts "Добро пожаловать в консольный магазин."
-puts "Для выбора товара введите его порядковый номер."
-puts "======================================================================"
+puts "Добро пожаловать в консольный магазин"
 
 basket = Basket.new
-choice = -1
+choice = 1
 
-until choice == 0 && choice < collection.size
+until choice == 0 
   collection.to_a.each.with_index(1) do |product, index|
     puts "#{index}. #{product}"
   end
 
   puts "0.Выход"
-  puts "======================================================================"
+  puts "======================================================================\n\n"
 
+  puts "Для выбора товара введите его порядковый номер или 0 для выхода"
   choice = STDIN.gets.to_i
-  puts
 
-  unless choice == 0
+  if (1..collection.size).include?(choice)
     user_choice = collection.to_a[choice - 1]
     user_choice.amount -= 1
     basket.add(user_choice)
     collection.delete_out_product!
 
-    puts "Вы выбрали: #{user_choice}"
+    puts "\nВы выбрали: #{user_choice}"
 
     puts "\nВсего товаров на сумму: #{basket.sum} руб."
     puts "======================================================================\n\n"
@@ -40,5 +38,5 @@ until choice == 0 && choice < collection.size
 end
 
 puts "Вы купили:"
-puts basket
+puts basket.checkout
 puts "\nС Вас — #{basket.sum} руб. Спасибо за покупки!\n\n"

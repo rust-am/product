@@ -24,7 +24,11 @@ class Book < Product
     @author = params[:author] if params[:author]
   end
 
+  def to_s_clean
+    "Книга «#{@name}», #{@genre}, автор — #{@author}"
+  end
+
   def to_s
-    "Книга «#{@name}», #{@genre}, автор — #{@author}, " + super
+    self.to_s_clean + super
   end
 end

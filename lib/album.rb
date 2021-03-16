@@ -27,7 +27,11 @@ class Album < Product
     @year = params[:year] if params[:year]
   end
 
+  def to_s_clean
+    "Альбом #{@performer} — «#{@name}», #{@genre}, #{@year}"
+  end
+
   def to_s
-    "Альбом #{@performer} — «#{@name}», #{@genre}, #{@year}, " + super
+    self.to_s_clean + super
   end
 end
