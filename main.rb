@@ -9,6 +9,7 @@ collection = ProductCollection.from_dir("#{__dir__}/data")
 collection.sort!(by: :price, order: :asc)
 
 puts "Добро пожаловать в консольный магазин"
+puts "======================================================================\n\n"
 
 basket = Basket.new
 choice = 1
@@ -31,7 +32,9 @@ until choice == 0
     collection.delete_out_product!
 
     puts "\nВы выбрали: #{user_choice}"
-
+    puts "======================================================================\n\n"
+    puts "Ваша корзина:"
+    puts basket.checkout
     puts "\nВсего товаров на сумму: #{basket.sum} руб."
     puts "======================================================================\n\n"
   end
