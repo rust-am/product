@@ -3,12 +3,13 @@ class Album < Product
 
   def self.from_file(file_path)
     file_data = File.readlines(file_path, chomp: true)
-    self.new(name: file_data[0],
-             performer: file_data[1],
-             genre: file_data[2],
-             year: file_data[3],
-             price: file_data[4],
-             amount: file_data[5])
+    new(
+      name: file_data[0],
+      performer: file_data[1],
+      genre: file_data[2],
+      year: file_data[3],
+      price: file_data[4],
+      amount: file_data[5])
   end
 
   def initialize(params)
@@ -32,6 +33,6 @@ class Album < Product
   end
 
   def to_s
-    self.to_s_clean + super
+    "#{to_s_clean}#{super}"
   end
 end

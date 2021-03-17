@@ -3,11 +3,12 @@ class Book < Product
 
   def self.from_file(file_path)
     file_data = File.readlines(file_path, chomp: true)
-    self.new(name: file_data[0],
-             genre: file_data[1],
-             author: file_data[2],
-             price: file_data[3],
-             amount: file_data[4])
+    new(
+      name: file_data[0],
+      genre: file_data[1],
+      author: file_data[2],
+      price: file_data[3],
+      amount: file_data[4])
   end
 
   def initialize(params)
@@ -29,6 +30,6 @@ class Book < Product
   end
 
   def to_s
-    self.to_s_clean + super
+    "#{to_s_clean}#{super}"
   end
 end
